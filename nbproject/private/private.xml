@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/wamp/www/CCTOS/direction/includes/pages/typepatient.php</file>
+            <file>file:/C:/wamp/www/CCTOS/direction/includes/parts/otherscript.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/SettingsManager.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/authenticationController.php</file>
+            <file>file:/C:/wamp/www/CCTOS/direction/includes/parts/header.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/loginManager.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/authenticationManager.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/PdoExecuteQuery.php</file>
+            <file>file:/C:/wamp/www/CCTOS/direction/includes/pages/viewpersonnel.php</file>
+            <file>file:/C:/wamp/www/CCTOS/accueil/index.php</file>
+            <file>file:/C:/wamp/www/CCTOS/direction/includes/pages/viewstock.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/FormFieldValidation.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/WebSiteController.php</file>
+            <file>file:/C:/wamp/www/CCTOS/service/includes/parts/header.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/PatientManager.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/UserManager.php</file>
+            <file>file:/C:/wamp/www/CCTOS/direction/includes/pages/tarif.php</file>
+            <file>file:/C:/wamp/www/CCTOS/direction/includes/pages/viewpatient.php</file>
+            <file>file:/C:/wamp/www/CCTOS/direction/index.php</file>
+            <file>file:/C:/wamp/www/CCTOS/direction/includes/templates/default.php</file>
+            <file>file:/C:/wamp/www/CCTOS/service/index.php</file>
+            <file>file:/C:/wamp/www/CCTOS/index.php</file>
+            <file>file:/C:/wamp/www/CCTOS/direction/includes/conf.ini</file>
+            <file>file:/C:/wamp/www/CCTOS/includes/pages/register.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/Template.php</file>
+            <file>file:/C:/wamp/www/CCTOS/direction/includes/pages/direction.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/StockManager.php</file>
+            <file>file:/C:/wamp/www/CCTOS/includes/pages/login.php</file>
+            <file>file:/C:/wamp/www/CCTOS/classes/ServiceManager.php</file>
+            <file>file:/C:/wamp/www/CCTOS/direction/includes/parts/menu.php</file>
+            <file>file:/C:/wamp/www/CCTOS/accueil/includes/parts/header.php</file>
+            <file>file:/C:/wamp/www/CCTOS/ajax/chartfeeds.php</file>
+        </group>
+    </open-files>
+</project-private>

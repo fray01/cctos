@@ -1,0 +1,7 @@
+.scroll{
+	overflow:scroll;
+}
+.lockscreen, .login-page, .content-wrapper{
+background-image: url("../img/1.jpg");
+background-repeat: inherit;
+}
