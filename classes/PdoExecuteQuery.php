@@ -1,10 +1,9 @@
 <?php
-class PdoExecuteQuery {
+class PdoExecuteQuery extends PdoConnexion {
 	
-	private $dbcnx;
+	public $dbcnx;
 	public function __construct()
 	{
- 		//require './classes/PdoConnexion.php';
 	}
 	public function executePdoQuery($query, $params=array()){
 		

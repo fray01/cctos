@@ -1,8 +1,7 @@
 <?php
 
-class authentication {
+class authentication extends PdoExecuteQuery{
 
-	private $executeRequest;
 	CONST STORE_USER = 'INSERT INTO users(unique_id, name, encrypted_password, salt, created_at, idService)
                             VALUES(:unique_id, :name, :encrypted_password, :salt, NOW(), :idService)';
 	CONST UPDATE_USER = 'UPDATE users 
@@ -20,14 +19,15 @@ class authentication {
 
 /*********************BEGIN DECLARE PUBLIC & PRIVATE********************/
 	private $pdoStatement;
-	
+
+    #public $executeRequest;
 	public $data;
 	public $pdoQuery;
 	
 /*********************END DECLARE********************/
     // constructor
     function __construct() {
-		date_default_timezone_set('GMT');
+        date_default_timezone_set('GMT');
 		$this->pdoQuery = new PdoExecuteQuery();
     }
 	
@@ -126,17 +126,21 @@ class authentication {
     {
 	if ($this->isFormSubmit('login') && !empty($_POST['name']) && !empty($_POST['password'])){
                 $formValidation = new FormFieldValidation();
+                echo "<br/>";
+                //print_r($_POST);
                 unset($_POST['formname']);
                 unset($_POST['submit']);
                 $formValidation->setDataFilter(array(
-                                'name' => FILTER_DEFAULT,
+                    'name' => FILTER_DEFAULT,
                 ));
                 $data = array(
-                                'name' => $_POST['name'],
+                    'name' => $_POST['name'],
                 );
 
                 $data = $formValidation->getFilteredData($data);
+                var_dump($data);
                 $result = $this->pdoQuery->executePdoSelectQueryTable(self::SELECT_USER_BY_NAME_PASSWORD, $data);
+                var_dump($result);
                 // check for result 
                 $no_of_rows = sizeOf($result);
                 if ($no_of_rows > 0) {
@@ -248,7 +252,7 @@ class authentication {
             unset($_POST['formname']);
             unset($_POST['submit']);
             $name = strip_tags($_POST['name']);
-			$param = array('name' => $name);
+			$param = array(':name' => $name);
 			$oldData = $this->pdoQuery->executePdoSelectQueryTable(self::SELECT_USER_BY_NAME_PASSWORD, $param);
             if ($this->isUserExisted($name) && sizeOf($oldData)>0){
                     $formValidation->setDataFilter(array(

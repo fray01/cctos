@@ -6,6 +6,7 @@ class authenticationController
 	private $serviceManager;
 	private $settingsManager;
 	private $errorManager;
+	private $authentication;
 	
 	public function __construct()
 	{
@@ -47,7 +48,7 @@ class authenticationController
         
 	public function storeUser()
 	{
-             return $this->authentication->storeUser();
+		return $this->authentication->storeUser();
 	}
 	public function login()
 	{

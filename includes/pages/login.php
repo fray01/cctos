@@ -1,9 +1,10 @@
-<?php 
+<?php
 	$data = null;
 	$login = null;
 	$formname = 'login';
 	if(isset($_POST['submit'])) {
-		$data = $this->login();
+    print_r ($_POST);
+    $data = $this->login();
 		$login = isset($_POST['name']) ? $_POST['name'] : '';
 	}
 ?>  
@@ -30,7 +31,7 @@
             }
            }
         ?>
-        <form action="index.php?p=login" method="post">
+        <form action="./index.php?p=login" method="post">
           <div class="form-group has-feedback">
             <input type="hidden" name="formname" value="<?php echo $formname; ?>"/>
             <input type="text" class="form-control" placeholder="login" name="name" value="<?php echo $login; ?>"/>
@@ -49,7 +50,7 @@
               </div>                        
             </div><!-- /.col -->
             <div class="col-xs-4">
-                <button type="submit" class="btn btn-primary btn-block btn-flat" name="submit">Entrer </button> 
+                <button type="submit" class="btn btn-primary btn-block btn-flat" value="submit" name="submit">Entrer </button> 
             </div><!-- /.col -->
           </div>
         </form>	
