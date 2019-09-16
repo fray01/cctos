@@ -46,7 +46,7 @@ $back = '<a href="'.$this->previousPage().'"><i class="fa fa-arrow-circle-left">
 			<div class="row">
 				<div class="col-xs-4">
 <!-- 					<label> Dossier N° </label> <label> <?php //echo $data['dossierPatient'];?> </label>-->
-					<label> Dossier N° </label> <label> <?php echo $data['numDossier'];?> </label>
+					<label> Dossier N° </label> <label> <?php echo $data['dossierPatient'];?> </label>
 				</div>
 			</div>
 			<div class="row">

@@ -452,6 +452,7 @@ class PatientManager
 	public function addNewPatient()
 	{
 		if ($this->isFormSubmit('addPatient')){
+			//$pdoQuery = new PdoExecuteQuery();
 			$formValidation = new FormFieldValidation();
 			unset($_POST['formname']);
 			unset($_POST['submit']);
@@ -469,6 +470,7 @@ class PatientManager
 				'perePatient' => FILTER_UNSAFE_RAW,
 				'merePatient' => FILTER_UNSAFE_RAW,
 				'assurancePatient' => FILTER_SANITIZE_ENCODED,
+				'etatPatient' => FILTER_SANITIZE_NUMBER_INT,
 				'idTypePatient' => FILTER_SANITIZE_NUMBER_INT,
 			));
 			$data = array(
@@ -486,13 +488,22 @@ class PatientManager
 				'idTypePatient' => (int)$_POST['idTypePatient'],
 			);
 			$idTypePatient = $this->getTypePatient($data['idTypePatient']);
-			$data = $formValidation->getFilteredData($data);
+			#var_dump($idTypePatient);echo "<br/>";
 			if($idTypePatient['designationTP']=="CAS SOCIAL"){
 				$data['etatPatient'] = 1;
 			}
 			else $data['etatPatient'] = 0;
-			$bool = $this->pdoQuery->executePdoQuery(self::SQL_ADD_PATIENT, $data);
-			return $this->error->isErrorMsg($bool, 'Enregistrement');
+			$data = $formValidation->getFilteredData($data);
+			#var_dump($data);
+			if($_POST['nom']==""|| $_POST['prenom']==""){
+				#echo "BOOM";
+				return $this->error->isErrorMsg($bool, 'Enregistrement');
+				#die();
+			}
+			else{
+				$bool = $this->pdoQuery->executePdoQuery(self::SQL_ADD_PATIENT, $data);
+				return $this->error->isErrorMsg($bool, 'Enregistrement');
+			}
 		}
 		else return;
 	}
@@ -503,6 +514,7 @@ class PatientManager
 			$formValidation = new FormFieldValidation();
 			unset($_POST['formname']);
 			unset($_POST['update']);
+			#$dossierPatient = $this->getLastFolderNumber($_POST['centre']);
 			if ($_SESSION['nomService']=="Accueil") {
 				$formValidation->setDataFilter(array(
 					'numDossier' => FILTER_SANITIZE_NUMBER_INT,
@@ -512,7 +524,7 @@ class PatientManager
 					'DDNPatient' => FILTER_SANITIZE_ENCODED,
 					'sexePatient' => FILTER_SANITIZE_ENCODED,
 					'professionPatient' => FILTER_UNSAFE_RAW,
-					'contactPatient' => FILTER_SANITIZE_ENCODED,
+					'contactPatient' => FILTER_SANITIZE_STRING,
 					'adressePatient' => FILTER_UNSAFE_RAW,
 					'perePatient' => FILTER_UNSAFE_RAW,
 					'merePatient' => FILTER_UNSAFE_RAW,
@@ -527,7 +539,7 @@ class PatientManager
 					'DDNPatient' => $_POST['ddn'],
 					'sexePatient' => $_POST['sexe'],
 					'professionPatient' => (string)strip_tags(ucwords($_POST['profession'])),
-					'contactPatient' => $_POST['contact'],
+					'contactPatient' => (string)$_POST['contact'],
 					'adressePatient' => strip_tags($_POST['adresse']),
 					'perePatient' => strip_tags(ucwords($_POST['pere'])),
 					'merePatient' => strip_tags(ucwords($_POST['mere'])),
@@ -550,7 +562,8 @@ class PatientManager
 
 			$idTypePatient = $this->getTypePatient($data['idTypePatient']);
 			$data = $formValidation->getFilteredData($data);
-		//	var_dump($data);
+			// var_dump($data);
+			// die();
 			if($idTypePatient['designationTP']=="CAS SOCIAL"){
 				$data['etatPatient'] = 1;
 			}
@@ -652,7 +665,7 @@ class PatientManager
 			if ($this->pdoStatement) {
 				foreach ($this->pdoStatement as $data){
 					$content.= '<tr>'.
-						'<td>' . $data['numDossier'] . '</td>'.
+						'<td>' . $data['dossierPatient'] . '</td>'.
 						'<td>' . $data['nomPatient'] . '</td>'.
 						'<td>' . $data['PrenomPatient'] . '</td>'.
 						'<td>' . $this->isDateFormat('Y-m-d', 'd-m-Y',$data['DDNPatient']) . '</td>'.

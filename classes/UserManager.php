@@ -210,8 +210,8 @@ class UserManager
 			unset($_POST['formname']);
 			unset($_POST['submit']);
 			$formValidation->setDataFilter(array(
-					'nomPersonnel' => FILTER_UNSAFE_RAW,
 					'matriculePersonnel' => FILTER_UNSAFE_RAW,
+					'nomPersonnel' => FILTER_UNSAFE_RAW,
 					'PrenomPersonnel' => FILTER_UNSAFE_RAW,
 					'DDNPersonnel' => FILTER_SANITIZE_STRING,
 					'sexePersonnel' => FILTER_SANITIZE_STRING,
@@ -223,8 +223,8 @@ class UserManager
 			
 			$filepath = $this->getAvatar($_FILES['vignette'], 'upload/picturefolder/');
 			$data = array(
-					'nomPersonnel' => ucwords(strip_tags($_POST['nom'])),
 					'matriculePersonnel' =>strtoupper(strip_tags($_POST['matricule'])),
+					'nomPersonnel' => ucwords(strip_tags($_POST['nom'])),
 					'PrenomPersonnel' => ucwords(strip_tags($_POST['prenom'])),
 					'DDNPersonnel' => $_POST['ddn'],
 					'sexePersonnel' => $_POST['sexe'],
@@ -233,7 +233,8 @@ class UserManager
 					'adressePersonnel' => (string)$_POST['adresse'],
 					'vignettePersonnel' => $filepath,
 			);
-			
+//			var_dump($data);
+//			exit();
 			$data = $formValidation->getFilteredData($data);
 			$bool = $this->pdoQuery->executePdoQuery(self::SQL_ADD_PERSONNEL, $data);
 			return $this->error->isErrorMsg($bool, 'Enregistrement');

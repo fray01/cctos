@@ -120,14 +120,12 @@ class authentication extends PdoExecuteQuery{
     }
 
     /**
-     * Get user by email and password
+     * Get user by name and password
      */
     public function getUserByNameAndPassword() 
     {
 	if ($this->isFormSubmit('login') && !empty($_POST['name']) && !empty($_POST['password'])){
                 $formValidation = new FormFieldValidation();
-                echo "<br/>";
-                //print_r($_POST);
                 unset($_POST['formname']);
                 unset($_POST['submit']);
                 $formValidation->setDataFilter(array(
@@ -138,9 +136,7 @@ class authentication extends PdoExecuteQuery{
                 );
 
                 $data = $formValidation->getFilteredData($data);
-                var_dump($data);
                 $result = $this->pdoQuery->executePdoSelectQueryTable(self::SELECT_USER_BY_NAME_PASSWORD, $data);
-                var_dump($result);
                 // check for result 
                 $no_of_rows = sizeOf($result);
                 if ($no_of_rows > 0) {
@@ -154,7 +150,6 @@ class authentication extends PdoExecuteQuery{
                     	$role = $this->pdoQuery->executePdoSelectQueryTable(self::SELECT_USER_SERVICE, array(
                                 'idService' => $idService,
                 ));
-//                     	var_dump($role); die();
                         // user authentication details are correct
                             $data = array(
                                             'error' => 0,
@@ -223,7 +218,7 @@ class authentication extends PdoExecuteQuery{
      * @param password
      * returns salt and encrypted password
      */
-    public function hashSSHA($password) {
+    private function hashSSHA($password) {
 
         $salt = sha1(rand());
         $salt = substr($salt, 0, 10);
@@ -237,7 +232,7 @@ class authentication extends PdoExecuteQuery{
      * @param salt, password
      * returns hash string
      */
-    public function checkhashSSHA($salt, $password) {
+    private function checkhashSSHA($salt, $password) {
 
         $hash = base64_encode(sha1($password . $salt, true) . $salt);
 
@@ -389,8 +384,6 @@ class authentication extends PdoExecuteQuery{
 		}
 		return $content;
 	}
-
-
 }
 
 ?>

@@ -3,20 +3,13 @@ class authenticationController
 {
 	private $pdoQuery;
 	private $template;
-	private $serviceManager;
-	private $settingsManager;
-	private $errorManager;
 	private $authentication;
 	
 	public function __construct()
 	{
 		$this->template = new Template(DIR_PAGES, DIR_TEMPLATES);
 		$this->pdoQuery = new PdoExecuteQuery();
-		$this->authentication = new authentication();
-		$this->serviceManager = new ServiceManager();
-		$this->settingsManager = new SettingsManager();
-		$this->errorManager= new ErrorsManager();
-		
+		$this->authentication = new authentication();		
 	}
 
 	public static function requiredClasses($dir='./')
@@ -26,10 +19,7 @@ class authenticationController
 		require $dir . 'classes/Template.php';
 		require $dir . 'classes/authenticationManager.php';
 		require $dir . 'classes/loginManager.php';
-		require $dir . 'classes/ServiceManager.php';
-		require $dir . 'classes/SettingsManager.php';
 		require $dir . 'classes/FormFieldValidation.php';
-		require $dir . 'classes/ErrorsManager.php';
 	}
 	
 	public function displayPage($pageName, $templateName)
@@ -54,14 +44,4 @@ class authenticationController
 	{
 		return $this->authentication->getUserByNameAndPassword();
 	}
-
-/******************END STOCK*******************************/
-        
-        
-/******************BEGIN SERVICE *******************************/
-	public function optionServices($idService){
-		return $this->serviceManager->optionServices($idService);
-	}
-/******************END SERVICE*******************************/
-	
 }

@@ -1,6 +1,5 @@
 <?php 
 session_start();
-//require 'classes/WebSiteController.php';
 require './classes/authenticationController.php';
 authenticationController::requiredClasses();
 

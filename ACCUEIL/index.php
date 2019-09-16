@@ -1,7 +1,6 @@
 <?php 
 session_start();
 require '../classes/WebSiteController.php';
-WebSiteController::requiredClasses('../');
 define('DIRECTORY', 'ACCUEIL');
 define('DEFAULT_PAGE', 'viewpatient');
 define('ERROR_PAGE', 'notfound');
@@ -18,10 +17,9 @@ if (isset($allowedPages[$page])){
 else {
 $page = ERROR_PAGE;
 }
-	$controller = new WebSiteController();
+        WebSiteController::requiredClasses('../');
+        $controller = new WebSiteController();
         $controller->checkLogin(DIRECTORY,'../');
         $controller->logout(); 
-	$controller->displayPage($page, $allowedPages[$page]['template']);
-
-
+        $controller->displayPage($page, $allowedPages[$page]['template']);
 ?>

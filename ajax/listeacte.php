@@ -8,7 +8,7 @@ $pdoQuery = new PdoExecuteQuery();
 
 if(isset($_GET['go']) || isset($_GET['idService'])) {
  
-		$numDossier = isset($_GET['detail']) ? (int)$_GET['detail']: '';
+	$numDossier = isset($_GET['detail']) ? (int)$_GET['detail']: '';
 	$json = array();
 // 	if (isset($_GET['detail']) && $_GET['detail']<>''){
 		
@@ -48,15 +48,12 @@ if(isset($_GET['go']) || isset($_GET['idService'])) {
     elseif(isset($_GET['idService']) AND $_GET['idService']<> "") {
         $id = htmlentities(intval($_GET['idService']));
         $requete = 'SELECT acte.idActe AS idService, 
-        		acte.designationActe AS nomService 
-        		FROM acte
-        		WHERE acte.idService = '. $id;
+			acte.designationActe AS nomService 
+			FROM acte
+			WHERE acte.idService = '. $id;
     }
 // }
-    
     $resultat = $pdoQuery->executePdoQuery($requete);
-    
-     
     // résultats
     	foreach($resultat as $donnees) {
 	        $json[$donnees['idService']][] = $donnees['nomService'];

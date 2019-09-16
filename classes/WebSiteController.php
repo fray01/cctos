@@ -7,7 +7,7 @@ class WebSiteController
 	private $typePatientManager;
 	private $userManager;
 	private $settingsManager;
-	private $error;
+	private $errorManager;
 	
 	public function __construct()
 	{
@@ -20,7 +20,7 @@ class WebSiteController
 		$this->userManager = new UserManager();
 		$this->stockManager = new StockManager();
 		$this->diagnosticManager = new diagnosticManager();
-		$this->error = new ErrorsManager();
+		$this->errorManager = new ErrorsManager();
 		$this->settingsManager = new SettingsManager();
 	}
 

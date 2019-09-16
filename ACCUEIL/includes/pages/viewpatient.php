@@ -60,11 +60,11 @@
 							?>
 							</div>
 							<div class="form-group has-feedback">
-								<input type="text" class="form-control" placeholder="Nom" name="nom" value="<?php echo $data['nomPatient'];?>" disabled/>
+								<input type="text" class="form-control" placeholder="Nom" name="nom" value="<?php echo $data['nomPatient'];?>" disabled required/>
 								<span class="glyphicon glyphicon-notes form-control-feedback"></span>
 							</div>
 							<div class="form-group has-feedback">
-								<input type="text" class="form-control" placeholder="Prénom" name="prenom" value="<?php echo $data['PrenomPatient'];?>" disabled/>
+								<input type="text" class="form-control" placeholder="Prénom" name="prenom" value="<?php echo $data['PrenomPatient'];?>" disabled required/>
 								<span class="glyphicon glyphicon-notes form-control-feedback"></span>
 							</div>
 							<div class="form-group has-feedback">
